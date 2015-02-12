@@ -5,31 +5,41 @@
     <title> start </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-    <link href="/flotilla/css/flotilla.css" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="/flotilla/css/endora.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    
     
     
 </head>
 
 <html>
     <body>
-        <div class="container">
-            <header>
-    Flotilla
-</header>
+        <div class="sidebar">
+    <div class="container">
+        <div class="sidebar-about"></div>
+        <div class="sidebar-sticky">
+            <h1>Flotilla</h1>
+            <ul class="sidebar-nav">
+                <li><a href="/flotilla">The Flotilla Website</a></li>
+                <li><a href="http://github.com/thrisp/flotilla">Flotilla @ github</a></li>
+                <li><a href="http://github.com/thrisp/flotilla/issues">Issue Tracker</a></li>
+            </ul> 
+        </div>  
+    </div>
+</div>
 
-            
+        <div class="content container">
+            <div class=page>
+                
 
 <h1 id="toc_0">Getting Started</h1>
 
 <h2 id="toc_1">Installation<a name="installation"></a></h2>
 
-<p>Flotilla is built around two core dependencies:</p>
+<p>Flotilla has one dependency, for ensuring a default Templator is provided:</p>
 
 <ul>
-<li><p><a href="http://github.com/thrisp/engine">engine</a> <em>routing, multiplexing, net/http basics &amp; interface</em></p></li>
-
-<li><p><a href="http://github.com/thrisp/djinn/">djinn</a> <em>templating</em></p></li>
+<li><a href="http://github.com/thrisp/djinn/">djinn</a> <em>templating</em></li>
 </ul>
 
 <p>Flotilla can be installed with <code>go get -u github.com/thrisp/flotilla</code>.</p>
@@ -92,10 +102,7 @@ func main() {
 
 <p>go run main.go &amp; visit: <a href="http://localhost:8080/quick/whatsmyluckynumber">http://localhost:8080/quick/whatsmyluckynumber</a></p>
 
-            <footer>
-    © Copyright 2015 <a href="http://github.com/thrisp">thrisp/hurrata</a>
-</footer>
-
+            </div>
         </div>
     </body>
 </html>

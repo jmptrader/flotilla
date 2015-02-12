@@ -3,7 +3,7 @@
   <channel>
       <title>Recent Content on  </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://thrisp.github.io/flotilla/index.xml/</link>
+    <link>http://localhost:1313/flotilla/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>index</title>
-      <link>http://thrisp.github.io/flotilla/</link>
+      <link>http://localhost:1313/flotilla/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
       
-      <guid>http://thrisp.github.io/flotilla/</guid>
+      <guid>http://localhost:1313/flotilla/</guid>
       <description>
 
 &lt;h1 id=&#34;toc_0&#34;&gt;Welcome&lt;/h1&gt;
@@ -38,23 +38,43 @@
     </item>
     
     <item>
-      <title>start</title>
-      <link>http://thrisp.github.io/flotilla/start/</link>
+      <title>extensions</title>
+      <link>http://localhost:1313/flotilla/extensions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
       
-      <guid>http://thrisp.github.io/flotilla/start/</guid>
+      <guid>http://localhost:1313/flotilla/extensions/</guid>
+      <description>
+
+&lt;p&gt;One of Flotilla&amp;rsquo;s main design goals is a pool of extensions, middleware, and packages to promote code reuse and the prevention of wasted effort in recreating everything from net/http whenever you want to do something requiring a web framework in Go(unless thats your thing).&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Extensions&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Login&lt;/h2&gt;
+
+&lt;p&gt;An extension to manage authentication &amp;amp; logins &lt;a href=&#34;https://github.com/thrisp/login&#34;&gt;-&amp;gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Principal&lt;/h2&gt;
+
+&lt;p&gt;Authorization management &lt;a href=&#34;https://github.com/thrisp/principal&#34;&gt;-&amp;gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>start</title>
+      <link>http://localhost:1313/flotilla/start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/flotilla/start/</guid>
       <description>
 
 &lt;h1 id=&#34;toc_0&#34;&gt;Getting Started&lt;/h1&gt;
 
 &lt;h2 id=&#34;toc_1&#34;&gt;Installation&lt;a name=&#34;installation&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;Flotilla is built around two core dependencies:&lt;/p&gt;
+&lt;p&gt;Flotilla has one dependency, for ensuring a default Templator is provided:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://github.com/thrisp/engine&#34;&gt;engine&lt;/a&gt; &lt;em&gt;routing, multiplexing, net/http basics &amp;amp; interface&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://github.com/thrisp/djinn/&#34;&gt;djinn&lt;/a&gt; &lt;em&gt;templating&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://github.com/thrisp/djinn/&#34;&gt;djinn&lt;/a&gt; &lt;em&gt;templating&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Flotilla can be installed with &lt;code&gt;go get -u github.com/thrisp/flotilla&lt;/code&gt;.&lt;/p&gt;
@@ -116,28 +136,6 @@ func main() {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;go run main.go &amp;amp; visit: &lt;a href=&#34;http://localhost:8080/quick/whatsmyluckynumber&#34;&gt;http://localhost:8080/quick/whatsmyluckynumber&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>extensions</title>
-      <link>http://thrisp.github.io/flotilla/extensions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
-      
-      <guid>http://thrisp.github.io/flotilla/extensions/</guid>
-      <description>
-
-&lt;p&gt;One of Flotilla&amp;rsquo;s main design goals is a pool of extensions, middleware, and packages to promote code reuse and the prevention of wasted effort in recreating everything from net/http whenever you want to do something requiring a web framework in Go(unless thats your thing).&lt;/p&gt;
-
-&lt;h1 id=&#34;toc_0&#34;&gt;Extensions&lt;/h1&gt;
-
-&lt;h2 id=&#34;toc_1&#34;&gt;Login&lt;/h2&gt;
-
-&lt;p&gt;An extension to manage authentication &amp;amp; logins &lt;a href=&#34;https://github.com/thrisp/login&#34;&gt;-&amp;gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_2&#34;&gt;Principal&lt;/h2&gt;
-
-&lt;p&gt;Authorization management &lt;a href=&#34;https://github.com/thrisp/principal&#34;&gt;-&amp;gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
