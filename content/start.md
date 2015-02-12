@@ -6,9 +6,7 @@ draft = "false"
 
 ## Installation<a name="installation"></a>
 
-Flotilla is built around two core dependencies: 
-
-- [engine](http://github.com/thrisp/engine) *routing, multiplexing, net/http basics & interface*
+Flotilla has one dependency, for ensuring a default Templator is provided:
 
 - [djinn](http://github.com/thrisp/djinn/) *templating*
 
