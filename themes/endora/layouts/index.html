@@ -1,11 +1,11 @@
 {{ partial "head.html" . }}
 <html>
     <body>
-        {{ partial "sidebar.html" . }}
         <main id="content" class="content" role="main">
+            {{ partial "header.html" . }}
             <article class="post">
                 <header class="post-header">
-                    <h2 class="post-title"><a href="/style-test/">{{ .Title }}</a></h2>
+                    <h2 class="post-title"><a href="/{{ .Title }}">{{ .Title }}</a></h2>
                 </header>
                 <section class="post-excerpt">
                     {{ range where .Data.Pages "Title" "index" }}
@@ -13,9 +13,10 @@
                     {{ end }}
                 </section>
                 <footer class="post-meta">
-                </footer> 
+                </footer>
+               {{ partial "footer.html" . }}
             </article>
         </main>
-        {{ partial "footer.html" . }}
+        
     </body>
 </html>

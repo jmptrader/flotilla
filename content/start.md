@@ -1,9 +1,8 @@
 +++
 title = "start"
+description = "Getting Started"
 draft = "false"
 +++
-# Getting Started
-
 ## Installation<a name="installation"></a>
 
 Flotilla has one dependency, for ensuring a default Templator is provided:
@@ -40,15 +39,16 @@ main.go
         return string(b)
     }
 
-    func Display(f *flotilla.Ctx) {
+    func Display(f flotilla.Ctx) {
         ret := fmt.Sprintf("Your lucky number is: %s", randSeq(20))
-        f.ServeData(200, []byte(ret))
+        f.Call("serveplain", ret)
     }
 
-    func Lucky() (e *flotilla.App) {
-        e = flotilla.New()
-        e.GET("/quick/:start", Display)
-        return e
+    func Lucky() *flotilla.App {
+        a := flotilla.New()
+        a.GET("/quick/:start", Display)
+        a.Configure()
+        return a
     }
 
     var quit = make(chan bool)
@@ -64,8 +64,8 @@ main.go
     }
 
     func main() {
-        fl := Lucky()
-        go fl.Run(":8080")
+        app := Lucky()
+        go app.Run(":8080")
         <-quit
     }
 

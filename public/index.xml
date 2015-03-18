@@ -10,34 +10,6 @@
     <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
     
     <item>
-      <title>index</title>
-      <link>http://localhost:1313/flotilla/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
-      
-      <guid>http://localhost:1313/flotilla/</guid>
-      <description>
-
-&lt;h1 id=&#34;toc_0&#34;&gt;Welcome&lt;/h1&gt;
-
-&lt;p&gt;Flotilla is a basic and extensible web framework for the Go language.&lt;/p&gt;
-
-&lt;p&gt;Improved documentation, testing, and more to come.&lt;/p&gt;
-
-&lt;h1 id=&#34;toc_1&#34;&gt;Getting Started&lt;a name=&#34;quickstart&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;Install with with &lt;code&gt;go get -u github.com/thrisp/flotilla&lt;/code&gt;. &lt;a href=&#34;/flotilla/start&#34;&gt;Learn More&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;toc_2&#34;&gt;Extensions&lt;a name=&#34;extensions&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;One of Flotilla&amp;rsquo;s primary goals is extensibility. &lt;a href=&#34;/flotilla/extensions&#34;&gt;Learn More&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;toc_3&#34;&gt;Community&lt;a name=&#34;community&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;Found a bug? Have a good idea for improving Flotilla?  Your participation and input is welcome. Visit the &lt;a href=&#34;https://github.com/thrisp/flotilla&#34;&gt;Github page&lt;/a&gt; to review code, fork &amp;amp; explore, or file an issue. If you&amp;rsquo;re interested in chatting with fellow developers, visit the IRC channel at #flotilla on irc.freenode.net. Helpful links and discussion can be found at &lt;a href=&#34;http://reddit.com/r/flotillaaa&#34;&gt;/r/flotilla&lt;/a&gt; on &lt;a href=&#34;http://reddit.com&#34;&gt;reddit&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>extensions</title>
       <link>http://localhost:1313/flotilla/extensions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
@@ -60,6 +32,26 @@
     </item>
     
     <item>
+      <title>index</title>
+      <link>http://localhost:1313/flotilla/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/flotilla/</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Flotilla&lt;/h1&gt;
+
+&lt;p&gt;a basic and extensible web framework for the Go language.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://github.com/thrisp/flotilla&#34;&gt;source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://github.com/thrisp/flotilla/issues&#34;&gt;issues&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Install with with &lt;code&gt;go get -u github.com/thrisp/flotilla&lt;/code&gt;. &lt;a href=&#34;/flotilla/start&#34;&gt;Learn More&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>start</title>
       <link>http://localhost:1313/flotilla/start/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
@@ -67,9 +59,7 @@
       <guid>http://localhost:1313/flotilla/start/</guid>
       <description>
 
-&lt;h1 id=&#34;toc_0&#34;&gt;Getting Started&lt;/h1&gt;
-
-&lt;h2 id=&#34;toc_1&#34;&gt;Installation&lt;a name=&#34;installation&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;Installation&lt;a name=&#34;installation&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;Flotilla has one dependency, for ensuring a default Templator is provided:&lt;/p&gt;
 
@@ -79,7 +69,7 @@
 
 &lt;p&gt;Flotilla can be installed with &lt;code&gt;go get -u github.com/thrisp/flotilla&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_2&#34;&gt;Example&lt;a name=&#34;example&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;Example&lt;a name=&#34;example&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;A simple example application using Flotilla.&lt;/p&gt;
 
@@ -105,15 +95,16 @@ func randSeq(n int) string {
     return string(b)
 }
 
-func Display(f *flotilla.Ctx) {
+func Display(f flotilla.Ctx) {
     ret := fmt.Sprintf(&amp;quot;Your lucky number is: %s&amp;quot;, randSeq(20))
-    f.ServeData(200, []byte(ret))
+    f.Call(&amp;quot;serveplain&amp;quot;, ret)
 }
 
-func Lucky() (e *flotilla.App) {
-    e = flotilla.New()
-    e.GET(&amp;quot;/quick/:start&amp;quot;, Display)
-    return e
+func Lucky() *flotilla.App {
+    a := flotilla.New()
+    a.GET(&amp;quot;/quick/:start&amp;quot;, Display)
+    a.Configure()
+    return a
 }
 
 var quit = make(chan bool)
@@ -129,8 +120,8 @@ func init() {
 }
 
 func main() {
-    fl := Lucky()
-    go fl.Run(&amp;quot;:8080&amp;quot;)
+    app := Lucky()
+    go app.Run(&amp;quot;:8080&amp;quot;)
     &amp;lt;-quit
 }
 &lt;/code&gt;&lt;/pre&gt;
