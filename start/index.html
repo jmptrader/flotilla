@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title> start </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Getting Started">
     <link rel="stylesheet" href="/flotilla/css/endora.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     
@@ -14,27 +14,21 @@
 
 <html>
     <body>
-        <div class="sidebar">
-    <div class="container">
-        <div class="sidebar-about"></div>
-        <div class="sidebar-sticky">
-            <h1>Flotilla</h1>
-            <ul class="sidebar-nav">
-                <li><a href="/flotilla">The Flotilla Website</a></li>
-                <li><a href="http://github.com/thrisp/flotilla">Flotilla @ github</a></li>
-                <li><a href="http://github.com/thrisp/flotilla/issues">Issue Tracker</a></li>
-            </ul> 
-        </div>  
-    </div>
+        <main id="content" class="content" role="main">
+            <div class="no-cover main-header" style="background-image: url(img/logo.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="/flotilla"><img src="/flotilla/img/logo.png"></img>Set your fleet afloat.</a>
+    </nav>
 </div>
 
-        <div class="content container">
-            <div class=page>
-                
+            <article class="post">
+                <header class="post-header">
+                    <h2 class="post-title"><a href="/flotilla/start/">Getting Started</a></h2>
+                </header>
+                <section class="post-excerpt">
+                    
 
-<h1 id="toc_0">Getting Started</h1>
-
-<h2 id="toc_1">Installation<a name="installation"></a></h2>
+<h2 id="toc_0">Installation<a name="installation"></a></h2>
 
 <p>Flotilla has one dependency, for ensuring a default Templator is provided:</p>
 
@@ -44,7 +38,7 @@
 
 <p>Flotilla can be installed with <code>go get -u github.com/thrisp/flotilla</code>.</p>
 
-<h2 id="toc_2">Example<a name="example"></a></h2>
+<h2 id="toc_1">Example<a name="example"></a></h2>
 
 <p>A simple example application using Flotilla.</p>
 
@@ -70,15 +64,16 @@ func randSeq(n int) string {
     return string(b)
 }
 
-func Display(f *flotilla.Ctx) {
+func Display(f flotilla.Ctx) {
     ret := fmt.Sprintf(&quot;Your lucky number is: %s&quot;, randSeq(20))
-    f.ServeData(200, []byte(ret))
+    f.Call(&quot;serveplain&quot;, ret)
 }
 
-func Lucky() (e *flotilla.App) {
-    e = flotilla.New()
-    e.GET(&quot;/quick/:start&quot;, Display)
-    return e
+func Lucky() *flotilla.App {
+    a := flotilla.New()
+    a.GET(&quot;/quick/:start&quot;, Display)
+    a.Configure()
+    return a
 }
 
 var quit = make(chan bool)
@@ -94,15 +89,22 @@ func init() {
 }
 
 func main() {
-    fl := Lucky()
-    go fl.Run(&quot;:8080&quot;)
+    app := Lucky()
+    go app.Run(&quot;:8080&quot;)
     &lt;-quit
 }
 </code></pre>
 
 <p>go run main.go &amp; visit: <a href="http://localhost:8080/quick/whatsmyluckynumber">http://localhost:8080/quick/whatsmyluckynumber</a></p>
 
-            </div>
-        </div>
+                </section>
+                <footer class="post-meta">
+                </footer> 
+            </article>
+        </main>
+        <footer class="site-footer clearfix">
+        <section class="copyright"><a href="http://github.com/thrisp">thrisp/hurrata</a> &copy; 2015</section>
+</footer>
+
     </body>
 </html>
